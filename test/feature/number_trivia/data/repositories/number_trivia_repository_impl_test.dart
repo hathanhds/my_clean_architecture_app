@@ -98,6 +98,7 @@ void main() {
         // check there is no method should be called from LocalDataSource
         verifyZeroInteractions(mockLocalDataSource);
         expect(result, equals(Left(ServerFailure())));
+        expect(result, Left(ServerFailure()));
       });
     });
 
