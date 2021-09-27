@@ -13,7 +13,6 @@ class Loading extends NumberTriviaState {}
 
 class Loaded extends NumberTriviaState {
   final NumberTriviaEntity trivia;
-
   Loaded({required this.trivia});
 }
 

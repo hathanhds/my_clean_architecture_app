@@ -10,6 +10,11 @@ import 'package:my_clean_architecture_app/features/number_trivia/domain/usecases
 part 'number_trivia_event.dart';
 part 'number_trivia_state.dart';
 
+const String SERVER_FAILURE_MESSAGE = 'Server Failure';
+const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
+const String INVALID_INPUT_FAILURE_MESSAGE =
+    'Invalid Input - The number must be a positive integer or zero';
+
 class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
   NumberTriviaBloc(
       {required this.getConcreteNumberTrivia,
@@ -25,6 +30,9 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
   Stream<NumberTriviaState> mapEventToState(
     NumberTriviaEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    if (event is GetTriviaForConcreteNumber) {
+      inputConverter.stringToUnsignedInterger(event.numberString);
+      yield Error(message: 'Invalid Input');
+    }
   }
 }
