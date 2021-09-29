@@ -3,6 +3,7 @@ import 'package:my_clean_architecture_app/features/number_trivia/presentation/pa
 import 'injection_container.dart' as di;
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await di.init();
   runApp(MyApp());
 }
@@ -14,7 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'NumberTrivia',
       theme: ThemeData(
-        primaryColor: Colors.green.shade800,
         primarySwatch: Colors.blue,
       ),
       home: NumberTriviaPage(),
